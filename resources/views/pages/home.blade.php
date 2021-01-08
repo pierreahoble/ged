@@ -3,7 +3,7 @@
 @section('style')
  <!-- DataTables -->
  <link href="{{asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
- <link href="{{asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+ <link href="{{asset('assets/libs/datatables.net-buttons-bs4/css/as.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 
  <!-- Responsive datatable examples -->
  <link href="{{asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
@@ -57,8 +57,8 @@
                             <td>Edinburgh</td>
                            
                             <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button>
+                                <a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
                             </td>
                            
                         </tr>
@@ -67,8 +67,8 @@
                             <td>Accountant</td>
                            
                             <td>63</td>
-                            <td><button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button></td>
+                            <td><a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a></td>
                            
                         </tr>
                         <tr>
@@ -77,8 +77,8 @@
                             <td>San Francisco</td>
                            
                             <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button>
+                                <a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
                             </td>
                           
                         </tr>
@@ -88,8 +88,8 @@
                             <td>Edinburgh</td>
                            
                             <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button>
+                                <a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
                             </td>
                            
                         </tr>
@@ -99,8 +99,8 @@
                             <td>Tokyo</td>
                            
                             <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button>
+                                <a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
                             </td>
                             
                         </tr>
@@ -110,71 +110,13 @@
                             <td>New York</td>
                            
                             <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button>
+                                <a type="button"  href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
                             </td>
                           
                         </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                           
-                            <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button>
-                            </td>
-                           
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                           
-                            <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button>
-                            </td>
-                           
-                        </tr>
-                        <tr>
-                            <td>Colleen Hurst</td>
-                            <td>Javascript Developer</td>
-                            <td>San Francisco</td>
-                           
-                            <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button>
-                            </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>Sonya Frost</td>
-                            <td>Software Engineer</td>
-                            <td>23</td>
-                            <td><button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button></td>
-                          
-                        </tr>
-                        <tr>
-                            <td>Jena Gaines</td>
-                            <td>Office Manager</td>
-                            <td>30</td>
-                            <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button></td>
-                           
-                        </tr>
-                        <tr>
-                            <td>Quinn Flynn</td>
-                            <td>Support Lead</td>
-                            <td>Edinburgh</td>
-                            
-                            <td>
-                                <button type="button" class="btn btn-info btn-rounded waves-effect waves-light"> <i class="mdi mdi-pencil"></i></button>
-                                <button type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle"></i></button></td>
-                            
-                        </tr>
+                       
+                        
                        
                        
                     </tbody>
@@ -200,13 +142,13 @@
 <script src="{{asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <!-- Buttons examples -->
 <script src="{{asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/libs/datatables.net-buttons-bs4/js/as.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/libs/jszip/jszip.min.js')}}"></script>
 <script src="{{asset('assets/libs/pdfmake/build/pdfmake.min.js')}}"></script>
 <script src="{{asset('assets/libs/pdfmake/build/vfs_fonts.js')}}"></script>
-<script src="{{asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('assets/libs/datatables.net-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('assets/libs/datatables.net-buttons/js/as.html5.min.js')}}"></script>
+<script src="{{asset('assets/libs/datatables.net-buttons/js/as.print.min.js')}}"></script>
+<script src="{{asset('assets/libs/datatables.net-buttons/js/as.colVis.min.js')}}"></script>
 <!-- Responsive examples -->
 <script src="{{asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>

@@ -34,7 +34,7 @@
                 </li>
 
                 <li>
-                    <a href="home" >
+                    <a href="{{url('home')}}" >
                         <i class="mdi mdi-file"></i>
                         <span>Liste des documents</span>
                     </a>
@@ -46,14 +46,14 @@
                     </ul> --}}
                 </li>
                 <li>
-                    <a href="ajouter" >
+                    <a href="{{url('ajouter')}}" >
                         <i class="mdi mdi-note-plus"></i>
                         <span>Ajouter un document</span>
                     </a>                   
                 </li>
 
                 <li>
-                    <a href="search">
+                    <a href="{{url('search')}}">
                         <i class="mdi  mdi-account-search"></i>
                         <span>Rechercher</span>
                     </a>                   

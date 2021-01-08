@@ -17,10 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', function () {
-    return view('pages.home');
-});
+Route::get('home', 'DoController@index');
 
-Route::view('ajouter','pages.ajouter_doc');
+Route::get('ajouter','DoController@add');
+
+Route::post('ajouter','DoController@store');
+
+//Modifier doc
+Route::get('modifier_{id}','DoController@show');
+
+//
 
 Route::view('search', 'pages.recherche_doc');
