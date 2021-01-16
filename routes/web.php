@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//Login
+Route::view('/', 'pages.login');
 
 Route::get('home', 'DoController@index');
 
