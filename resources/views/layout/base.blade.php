@@ -29,6 +29,7 @@
     <div class="container-fluid">
         <!-- Begin page -->
         <div id="layout-wrapper">
+           
 
            @include('layout.head')
 
@@ -40,7 +41,7 @@
             <div class="main-content">
 
                 <div class="page-content">
-                 
+                    {{-- @include('layout.message') --}}
                     {{-- <!-- start page title -->
                     <div class="row">
                         <div class="col-12">

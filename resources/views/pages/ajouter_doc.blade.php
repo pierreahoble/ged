@@ -35,18 +35,35 @@
                     <div data-repeater-list="outer-group" class="outer">
                         <div data-repeater-item class="outer">
                             <div class="form-group">
-                                <label for="formname">Titre du document :</label>
-                                <input type="text" class="form-control" id="formname" name="titre" placeholder="Entrer le titre du document..." required>
+                                <label for="formname">Référence du document :</label>
+                                <input type="text" name="reference" class="form-control @error('reference') is-invalid @enderror"  placeholder="Entrer la référence du document..." required>
+                                @error('reference')
+                                    <div class="error">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
+                                <label for="formname">Titre du document :</label>
+                                <input type="text" class="form-control @error('titre') is-invalid @enderror" name="titre" placeholder="Entrer le titre du document..." required>
+                                @error('titre')
+                                     <div class="error">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group">
                                 <label for="formemail">Type du document :</label>
-                                <input type="text" class="form-control" id="formemail" name="type" placeholder="Entrer le type du document..." required>
+                                <input type="text" class="form-control @error('type') is-invalid @enderror" name="type" placeholder="Entrer le type du document..." required>
+                                @error('type')
+                                     <div class="error">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="formemail" >Chosir le document :</label>
-                                <input type="file" class="form-control" accept="pdf,word" name="doc">
+                                <input type="file" class="form-control @error('document') is-invalid @enderror" accept="pdf,word" name="document">
+                                @error('document')
+                                     <div class="error">{{ $message }}</div>
+                                @enderror
                             </div>
 
 
@@ -56,7 +73,10 @@
 
                             <div class="form-group">
                                 <label for="formmessage">Description du document :</label>
-                                <textarea id="formmessage" class="form-control" rows="3" placeholder="Entrer la description du document"></textarea>
+                                <textarea id="formmessage" class="form-control @error('description') is-invalid @enderror" rows="3" name="description" placeholder="Entrer la description du document"></textarea>
+                                @error('description')
+                                     <div class="error">{{ $message }}</div>
+                                @enderror
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Soumettre</button>
                         </div>

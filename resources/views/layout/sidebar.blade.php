@@ -9,9 +9,8 @@
             </div>
 
             <div class="mt-3">
-
-                <a href="#" class="text-dark font-weight-medium font-size-16">Patrick GED</a>
-                <p class="text-body mt-1 mb-0 font-size-13">Directeur General</p>
+                <a href="#" class="text-dark font-weight-medium font-size-16">{{Auth::user()->nom}} {{Auth::user()->prenom}}</a>
+                <p class="text-body mt-1 mb-0 font-size-13">Utilisateur GED</p>
 
             </div>
         </div>
@@ -53,11 +52,27 @@
                 </li>
 
                 <li>
-                    <a href="{{url('search')}}">
-                        <i class="mdi  mdi-account-search"></i>
-                        <span>Rechercher</span>
+                    <a href="{{url('addUser')}}">
+                        <i class="mdi  mdi-account-multiple-plus"></i>
+                        <span>Ajouter un utilisateur</span>
                     </a>                   
                 </li>
+
+                <li>
+                    <a href="{{url('profile')}}">
+                        <i class="mdi  mdi-account-edit"></i>
+                        <span>Profile</span>
+                    </a>                   
+                </li>
+
+                <li>
+                    <a href="{{url('historique')}}">
+                        <i class="mdi  mdi-history"></i>
+                        <span>Historique</span>
+                    </a>                   
+                </li>
+
+               
 
                
 

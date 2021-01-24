@@ -17,14 +17,22 @@
     <!-- App Css-->
     <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
+    <style>
+        .back{
+            background-image: url('{{asset('assets/images/back.png')}}');
+            max-width: 100%;
+	        height: auto;
+        }
+    </style>
+
 </head>
 
-<body>
+<body class="back">
     <div class="home-btn d-none d-sm-block">
         <a href="index.html" class="text-dark"><i class="fas fa-home h2"></i></a>
     </div>
     <div class="account-pages my-5 pt-sm-5">
-        <div class="container">
+        <div class="container" >
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="card overflow-hidden">
@@ -38,18 +46,35 @@
                                     </a> --}}
                             </div>
                         </div>
+
+                        {{-- @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif --}}
                         <div class="card-body pt-5">
                             <div class="p-2">
-                                <form class="form-horizontal" action="home">
+                                <form class="form-horizontal" action="{{url('login')}}" method="POST">
 
+                                    @csrf
                                     <div class="form-group">
                                         <label for="username">Email utilisateur</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Entrer votre adresse email">
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Entrer votre adresse email" value="{{old('email')}}">
+                                        @error('email')
+                                        <div class="error">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label for="userpassword">Mot de passe</label>
-                                        <input type="password" class="form-control" id="userpassword" placeholder="Entrer votre mot de passe">
+                                        <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror"" id="userpassword" placeholder="Entrer votre mot de passe">
+                                        @error('password')
+                                        <div class="error">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     {{-- <div class="custom-control custom-checkbox">
@@ -62,7 +87,7 @@
                                     </div>
 
                                     <div class="mt-4 text-center">
-                                        <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock mr-1"></i>  Mot de passe oublié?</a>
+                                        <a href="#" class="text-muted"><i class="mdi mdi-lock mr-1"></i>  Mot de passe oublié?</a>
                                     </div>
                                 </form>
                             </div>
@@ -70,7 +95,7 @@
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <p>Vous n'avez pas de compte?  <a href="#" class="font-weight-medium text-primary"> S'inscrire maintenant </a> </p>
+                        <p>Vous n'avez pas de compte?  <a href="register" class="font-weight-medium text-primary"> S'inscrire maintenant </a> </p>
                         <p>© 2021 GED.  <i class="mdi mdi-heart text-danger"></i> by Peter</p>
                     </div>
 

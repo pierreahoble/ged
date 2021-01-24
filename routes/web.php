@@ -20,15 +20,45 @@ use Illuminate\Support\Facades\Route;
 //Login
 Route::view('/', 'pages.login');
 
-Route::get('home', 'DoController@index');
+//Connexion a la base de donnees
+Route::post('login','UserController@login');
+    
+//Register affichage de la vue 
+Route::get('addUser','UserController@index');
 
-Route::get('ajouter','DoController@add');
+ //Store user register
+ Route::post('addUser','UserController@storeUser');
+    
 
-Route::post('ajouter','DoController@store');
+Route::group(['middleware' => 'App\Http\Middleware\AuthMiddleware'], function () {
+    
 
-//Modifier doc
-Route::get('modifier_{id}','DoController@show');
+    //Logout
+    Route::get('logout','UserController@logout');
+    
+    //Profile utilisateur
+    
+    Route::get('profile','UserController@profileUser');
+    
+    //Modification des donnees user
+    Route::post('profile','UserController@updateUser');
+    
+    
+    
+    Route::get('home', 'DoController@index');
+    
+    Route::get('ajouter','DoController@add');
+    
+    Route::post('ajouter','DoController@storeDocument');
+    
+    //Modifier doc
+    Route::get('modifier_{id}','DoController@show');
+    
+    //
+    
+    Route::view('search', 'pages.recherche_doc');
 
-//
 
-Route::view('search', 'pages.recherche_doc');
+    //Historique
+    Route::get('historique','HistoriqueController@index');
+});
