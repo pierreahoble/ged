@@ -72,6 +72,13 @@
                     </a>                   
                 </li>
 
+                <li>
+                    <a href="{{url('ajouterType')}}">
+                        <i class="mdi  mdi-cube-outline"></i>
+                        <span>Ajouter un type de document</span>
+                    </a>                   
+                </li>
+
                
 
                

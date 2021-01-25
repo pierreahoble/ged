@@ -49,10 +49,15 @@
                                      <div class="error">{{ $message }}</div>
                                 @enderror
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="formemail">Type du document :</label>
-                                <input type="text" class="form-control @error('type') is-invalid @enderror" name="type" placeholder="Entrer le type du document..." required>
+                                <select name="type" class="form-control @error('document') is-invalid @enderror" required>
+                                    <option value="">Choisir un type de document</option>
+                                    @foreach ($types as $type)
+                                    <option value="{{$type->id}}">{{$type->libelle}}</option>                                        
+                                    @endforeach
+                                </select>
                                 @error('type')
                                      <div class="error">{{ $message }}</div>
                                 @enderror

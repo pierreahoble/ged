@@ -4,7 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Documents extends Model
+class Document extends Model
 {
-    //
+     protected $fillable = [
+        'numRef', 'titreDocuemnt','idType','iduser','nomDocument','description','titre'
+    ];
+    
+
+
+    public function type()
+    {
+            return $this->hasOne('App\Type', 'id', 'idType');
+        
+    }
+
+
+
 }

@@ -51,72 +51,21 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                           
-                            <td>
-                                <a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
-                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
-                            </td>
-                           
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                           
-                            <td>63</td>
-                            <td><a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
-                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a></td>
-                           
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                           
-                            <td>
-                                <a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
-                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
-                            </td>
-                          
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                           
-                            <td>
-                                <a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
-                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
-                            </td>
-                           
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                           
-                            <td>
-                                <a type="button" href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
-                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
-                            </td>
+                        @foreach ($documents as $document)
                             
-                        </tr>
                         <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
+                            <td>{{$document->numRef}}</td>
+                            <td>{{$document->titre}}</td>
+                            <td>{{$document->Type->libelle}}</td>
                            
                             <td>
-                                <a type="button"  href="{{url('modifier_1')}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
-                                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
+                                <a type="button" href="{{url('modifier_'.$document->id)}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                <a type="button" href="{{url($document->nomDocument)}}#toolbar=0" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a>
+                                <a type="button" data-id="{{$document->id}}" class="valider btn btn-danger btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
                             </td>
-                          
+                           
                         </tr>
-                       
-                        
+                        @endforeach
                        
                        
                     </tbody>
@@ -129,6 +78,29 @@
 </div>
 <!-- end row -->
 
+
+    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title mt-0">Supprimer un fichier</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Etes-vous sûre de vouloire supprimer ce fichier ?.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger">Supprimer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
     
 
@@ -156,6 +128,17 @@
 <!-- Datatable init js -->
 <script src="{{asset('assets/js/datatable.js')}}"></script>
 {{-- <script src="{{asset('assets/js/pages/datatables.init.js')}}"></script> --}}
+
+<script>
+    $('.valider').each(function(){
+        $(this).click(function(){
+            var id =$(this).data('id')
+            var lien = 'supprimer_'+id
+            $('#envoyer').attr("href",lien)
+          console.log(id);
+        })
+    })
+</script>
 
     
 @endsection

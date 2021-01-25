@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Historique;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HistoriqueController extends Controller
 {

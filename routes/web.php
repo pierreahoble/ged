@@ -48,13 +48,28 @@ Route::group(['middleware' => 'App\Http\Middleware\AuthMiddleware'], function ()
     Route::get('home', 'DoController@index');
     
     Route::get('ajouter','DoController@add');
-    
+
+    //Ajouter un document    
     Route::post('ajouter','DoController@storeDocument');
     
     //Modifier doc
     Route::get('modifier_{id}','DoController@show');
     
-    //
+    //Valider les modificatins du doc
+    Route::post('modificationDocument','DoController@updateDocument');
+
+    //Suppression d'un document
+    Route::get('supprimer_{id}','DoController@delete');
+
+
+
+    //Categorie une type vue add
+    Route::get('ajouterType','TypeController@index');
+
+    //Add Type
+    Route::post('ajouterType','TypeController@addType');
+
+
     
     Route::view('search', 'pages.recherche_doc');
 
