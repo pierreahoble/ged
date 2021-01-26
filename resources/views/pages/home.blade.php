@@ -30,6 +30,8 @@
     </div>
 </div>
 
+@include('layout.message')
+
 
 <div class="row">
     <div class="col-12">
@@ -59,9 +61,21 @@
                             <td>{{$document->Type->libelle}}</td>
                            
                             <td>
-                                <a type="button" href="{{url('modifier_'.$document->id)}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                @auth
+                                @if (auth()->user()->groupe_user==1)
                                 <a type="button" href="{{url($document->nomDocument)}}#toolbar=0" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a>
-                                <a type="button" data-id="{{$document->id}}" class="valider btn btn-danger btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
+                                @elseif(auth()->user()->groupe_user==2)
+                                    <a type="button" href="{{url('modifier_'.Crypt::encrypt($document->id))}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                    <a type="button" href="{{url($document->nomDocument)}}#toolbar=0" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a>
+                                    {{-- <a type="button" data-id="{{Crypt::encrypt($document->id)}}" class="valider btn btn-danger btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="mdi mdi-delete-circle" style="color: white"></i></a> --}}
+
+                                @else
+                                <a type="button" href="{{url('modifier_'.Crypt::encrypt($document->id))}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                <a type="button" data-id="{{Crypt::encrypt($document->id)}}" class="valider btn btn-danger btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
+                                <a type="button" href="{{url($document->nomDocument)}}#toolbar=0" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a>
+
+                                @endif
+                                @endauth
                             </td>
                            
                         </tr>
@@ -92,8 +106,8 @@
                     <p>Etes-vous sûre de vouloire supprimer ce fichier ?.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger">Supprimer</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a type="button" href="#" id="envoyer" class="btn btn-danger">Supprimer</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                   </div>
             </div>
             <!-- /.modal-content -->
@@ -138,6 +152,9 @@
           console.log(id);
         })
     })
+
+
+
 </script>
 
     

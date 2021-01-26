@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
      protected $fillable = [
-        'numRef', 'titreDocuemnt','idType','iduser','nomDocument','description','titre'
+        'numRef', 'titreDocuemnt','idType','iduser','nomDocument','description','titre','supprimer'
     ];
     
 

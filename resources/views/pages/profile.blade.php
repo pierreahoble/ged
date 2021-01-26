@@ -109,17 +109,17 @@
                                 <h5 class="card-title mb-3"> Information Personnelle</h5>
                 
                                 <p class="card-title-desc">
-                                   AHOBLE SIMON PIERRE
+                                   {{$user->nom}} {{$user->prenom}}
                                 </p>
                 
                                 <div class="mt-3">
                                     <p class="font-size-12 text-muted mb-1">Addresse Email </p>
-                                    <h6 class="">StaceyTLopez@armyspy.com</h6>
+                                    <h6 class="">{{$user->email}}</h6>
                                 </div>
                 
                                 <div class="mt-3">
                                     <p class="font-size-12 text-muted mb-1">Numéro de Téléphone</p>
-                                    <h6 class="">001 951-402-8341</h6>
+                                    <h6 class="">{{$user->tel}}</h6>
                                 </div>
                 
                                 {{-- <div class="mt-3">

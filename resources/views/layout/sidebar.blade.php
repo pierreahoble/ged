@@ -26,24 +26,53 @@
                         <i class="mdi mdi-airplay"></i>
                         <span>Tableau de Bord</span>
                     </a>
-                    {{-- <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="index.html">Tableau de Bord 1</a></li>
-                        <li><a href="index-2.html">Tableau de Bord 2</a></li>
-                    </ul> --}}
                 </li>
 
+                @auth
+
+                @if (auth()->user()->groupe_user==1)
+                        
+                    <li>
+                        <a href="{{url('home')}}" >
+                            <i class="mdi mdi-file"></i>
+                            <span>Liste des documents</span>
+                        </a>
+                        
+                    </li>
+
+                @elseif(auth()->user()->groupe_user==2)
+                    <li>
+                        <a href="{{url('home')}}" >
+                            <i class="mdi mdi-file"></i>
+                            <span>Liste des documents</span>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="{{url('ajouter')}}" >
+                            <i class="mdi mdi-note-plus"></i>
+                            <span>Ajouter un document</span>
+                        </a>                   
+                    </li>
+
+
+                @else
                 <li>
                     <a href="{{url('home')}}" >
                         <i class="mdi mdi-file"></i>
                         <span>Liste des documents</span>
                     </a>
-                    {{-- <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="layouts-horizontal.html"></a></li>
-                        <li><a href="layouts-compact-sidebar.html">Ajouter un document</a></li>
-                        <li><a href="layouts-icon-sidebar.html">Rechercher un document</a></li>
-                       
-                    </ul> --}}
                 </li>
+
+
+                <li>
+                    <a href="{{url('ajouter')}}" >
+                        <i class="mdi mdi-note-plus"></i>
+                        <span>Ajouter un document</span>
+                    </a>                   
+                </li>
+
                 <li>
                     <a href="{{url('ajouter')}}" >
                         <i class="mdi mdi-note-plus"></i>
@@ -79,7 +108,13 @@
                     </a>                   
                 </li>
 
+
+
+                @endif
                
+               
+                @endauth
+
 
                
 

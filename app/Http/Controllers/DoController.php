@@ -6,13 +6,14 @@ use App\Type;
 use App\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 
 class DoController extends Controller
 {
     public function index()
     {
-        $documents=Document::all();
+        $documents=Document::where('supprimer',0)->get();
         $this->historique(Auth::user()->id,'Consulter la page de la liste des documents'); 
         return view('pages.home',[
             'documents'=>$documents
@@ -80,7 +81,9 @@ class DoController extends Controller
     //Show docuemnt 
     public function show($id)
     {
+        $id= Crypt::decrypt($id);
         $document=Document::find($id);
+         
         $types=Type::all();
         //$this->historique(Auth::user()->id,'Consulter la page d\'ajout d\'utilisateur');
         return view('pages.modifier_doc',[
@@ -134,8 +137,8 @@ class DoController extends Controller
             'description'=>request('description')
         ]);
       }
-
-
+      
+      Session::flash('succes', 'Document modifié avec succes');
        return redirect('home');
     }
 
@@ -143,7 +146,12 @@ class DoController extends Controller
 
     public function delete($id)
     {
-        return $id;
+        $id= Crypt::decrypt($id);
+        $document=Document::find($id)->update([
+            'supprimer'=>1
+        ]);
+        Session::flash('succes', 'Document supprimé avec succes');
+        return  redirect()->back();
     }
 
 
