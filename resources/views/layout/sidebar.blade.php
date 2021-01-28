@@ -57,7 +57,7 @@
                     </li>
 
 
-                @else
+                @elseif(auth()->user()->groupe_user==0)
                 <li>
                     <a href="{{url('home')}}" >
                         <i class="mdi mdi-file"></i>
@@ -65,13 +65,6 @@
                     </a>
                 </li>
 
-
-                <li>
-                    <a href="{{url('ajouter')}}" >
-                        <i class="mdi mdi-note-plus"></i>
-                        <span>Ajouter un document</span>
-                    </a>                   
-                </li>
 
                 <li>
                     <a href="{{url('ajouter')}}" >
@@ -108,6 +101,13 @@
                     </a>                   
                 </li>
 
+                @else 
+                <li>
+                    <a href="{{url('nonautoriser')}}">
+                        <i class="mdi  mdi-cube-outline"></i>
+                        <span>Vous n'etes pas autorise</span>
+                    </a>                   
+                </li>
 
 
                 @endif

@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/change', function () {
+
+    App\User::find(1)->update([
+        'password'=>bcrypt('12345')
+    ]);
+    return "true";
+});
 
 //Login
 Route::view('/', 'pages.login');

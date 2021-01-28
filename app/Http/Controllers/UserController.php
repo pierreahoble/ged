@@ -85,7 +85,12 @@ class UserController extends Controller
             Session::flash('success','Vous êtes connetés');
             $this->historique(Auth::user()->id,'Connexion au tableau de bord');
             return redirect('home');
-        }else {
+        }elseif($user && Auth::user()->groupe_user==2){
+            Session::flash('success','Vous êtes connetés');
+            $this->historique(Auth::user()->id,'Connexion au tableau de bord');
+            return redirect('home');
+        }
+        else {
             return redirect()->back()->withErrors([
                 'email'=>'Adresse email invalide',
                 'password'=>'Mot de passe incorrecte'

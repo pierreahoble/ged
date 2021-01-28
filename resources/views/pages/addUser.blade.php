@@ -102,12 +102,13 @@
                     
                  
                     <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Choisir l'utilisateur</label>
+                        <label class="col-md-2 col-form-label">Droits d'utilisateur</label>
                         <div class="col-md-10">
                             <select name="userType" class="form-control" required>
-                                <option value="">Choisir l'utilisateur</option>
-                                <option value="1">Utilisateur 1</option>
-                                <option value="2">Utilisateur 2</option>
+                                <option value="">Choisir les droits d'utilisateur</option>
+                                    <option value="1">Lecture</option>
+                                    <option value="2">Lecture - Ecriture</option>
+                                    <option value="0">Lecture - Ecriture - Suppression</option>
                             </select>
                         </div>
                     </div>
