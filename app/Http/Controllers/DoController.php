@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
+Use File;
 
 class DoController extends Controller
 {
@@ -114,6 +115,8 @@ class DoController extends Controller
         ]
       );
 
+    //   return Document::find(request('id'));
+
       if ($request->hasfile('document')) 
       {            $filepdf=request('titre').'_'.''.time().'.'.request()->document->getClientOriginalExtension();
             request()->document->move(public_path('documents'), $filepdf);
@@ -126,6 +129,12 @@ class DoController extends Controller
                 'nomDocument'=>'documents/'.$filepdf,
                 'description'=>request('description')
             ]);
+
+            $image_path = "documents".$request['document']; // Value is not URL but directory file path 
+                if(File::exists($image_path)) { 
+                    return $image_path;
+                    File::delete($image_path); 
+                } 
 
       }else{
         $document=Document::find(request('id'))->update([
