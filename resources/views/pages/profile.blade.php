@@ -30,7 +30,7 @@
 
                     <div class="text-center">
                         <div class="">
-                            <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-lg mx-auto img-thumbnail rounded-circle">
+                            <img src="{{asset('assets/images/users/profile.png')}}" alt="" class="avatar-lg mx-auto img-thumbnail rounded-circle">
                             <div class="online-circle"><i class="fas fa-circle text-success"></i></div>
                         </div>
 
@@ -58,8 +58,8 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <p class="mb-2">Totale des Documents enrégistrés</p>
-                                <h4 class="mb-0">65</h4>
+                                <p class="mb-2">Totale des Documents enrégistrés :</p>
+                                <h4 class="mb-0">{{$nombre_document}}</h4>
                             </div>
                             <div class="col-4">
                                 <div class="text-right">

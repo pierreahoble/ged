@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -104,9 +105,11 @@ class UserController extends Controller
     public function profileUser()
     {
         $user=Auth::user();
+         $nombre_document=Document::where('idUser','=',$user->id)->count();
         $this->historique($user->id,'Consulter la page profile user');
         return view('pages.profile',[
-            'user'=>$user
+            'user'=>$user,
+            'nombre_document'=>$nombre_document
         ]);
     }
 
