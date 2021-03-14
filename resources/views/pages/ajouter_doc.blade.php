@@ -64,6 +64,20 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="formemail">Format du document :</label>
+                                <select name="format" class="form-control @error('format') is-invalid @enderror" required>
+                                    <option value="">Choisir un format de document</option>                                    
+                                    <option value="image">Image</option>                                        
+                                    <option value="Docuement Pdf">Docuement Pdf</option>                                        
+                                    <option value="Docuement word">Docuement Word</option>                                        
+                                    <option value="Docuement txt">Docuement Text</option>                                        
+                                </select>
+                                @error('type')
+                                     <div class="error">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label for="formemail" >Chosir le document :</label>
                                 <input type="file" class="form-control @error('document') is-invalid @enderror" accept="pdf,word" name="document">
                                 @error('document')

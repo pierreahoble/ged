@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="page-title mb-0 font-size-18">Liste des documents</h4>
+            <h4 class="page-title mb-0 font-size-18">Rechercher des documents</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -30,6 +30,28 @@
 </div>
 
 @include('layout.message')
+
+<div class="row">
+    <div class="col-12">
+        <form class="outer-repeater" action="searchDoc" method="POST">
+            <div class="form-group">
+                @csrf
+                <label for="formemail">Type du document :</label>
+                <select name="type" class="form-control @error('document') is-invalid @enderror" required>
+                    <option value="">Choisir un type de document</option>
+                    @foreach ($types as $type)
+                    <option value="{{$type->id}}">{{$type->libelle}}</option>                                        
+                    @endforeach
+                </select>
+                @error('type')
+                     <div class="error">{{ $message }}</div>
+                @enderror
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Rechercher</button> <br> <br>
+
+        </form>
+    </div>
+</div>
 
 
 <div class="row">

@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('createUser',function(){
+    
+    App\User::create([
+        'nom'=>'AHOBLE',
+        'email'=>'ahosipik@gmail.com',
+        'password'=>bcrypt('1234'),
+        'prenom'=>'Pierre',
+        'groupe_user'=>'1',
+        'tel'=>'99212748'
+    ]);
+
+    return 'true';
+});
+
 Route::get('/change', function () {
 
     App\User::find(1)->update([
@@ -74,10 +89,17 @@ Route::group(['middleware' => 'App\Http\Middleware\AuthMiddleware'], function ()
     Route::post('ajouterType','TypeController@addType');
 
 
-    
-    Route::view('search', 'pages.recherche_doc');
+     //Rechercher un document par categorie
+    Route::get('searchDoc', 'DoController@recherche')->name('rechercherDocument');
+
+    //Faire la recherche
+    Route::post('searchDoc','DoController@rechercher');
 
 
     //Historique
     Route::get('historique','HistoriqueController@index');
+
+
+   
+   
 });

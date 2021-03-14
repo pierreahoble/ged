@@ -69,7 +69,14 @@
                 <li>
                     <a href="{{url('ajouter')}}" >
                         <i class="mdi mdi-note-plus"></i>
-                        <span>Ajouter un document</span>
+                        <span>Ajouter un Doc</span>
+                    </a>                   
+                </li>
+
+                <li>
+                    <a href="{{url('searchDoc')}}" >
+                        <i class="mdi mdi-note-plus"></i>
+                        <span>Rechercher un Doc</span>
                     </a>                   
                 </li>
 

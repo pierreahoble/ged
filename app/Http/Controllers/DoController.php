@@ -66,6 +66,7 @@ class DoController extends Controller
         'numRef'=>request('reference'),
          'titre'=>$request['titre'],
          'idType'=>request('type'),
+         'format'=>request('format'),
          'iduser'=>Auth::user()->id,
          'nomDocument'=>'documents/'.$filepdf,
          'description'=>request('description')
@@ -161,6 +162,27 @@ class DoController extends Controller
         ]);
         Session::flash('succes', 'Document supprimé avec succes');
         return  redirect()->back();
+    }
+
+
+    //Rechercher
+
+    public function recherche(){
+        $documents=Document::where('supprimer',0)->get();
+        $types=Type::all();
+        return view('pages.recherche',[
+            'documents'=>$documents,
+            'types'=>$types
+        ]);
+    }
+
+    public function rechercher(REQUEST $request){
+        $documents=Document::where('idType',request('type'))->get();
+       $types=Type::all();
+        return view('pages.recherche',[
+            'documents'=>$documents,
+            'types'=>$types
+        ]);
     }
 
 
