@@ -17,12 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('createUser',function(){
     
     App\User::create([
-        'nom'=>'AHOBLE',
-        'email'=>'ahosipik@gmail.com',
+        'nom'=>'Manzi',
+        'email'=>'laurent@gmail.com',
         'password'=>bcrypt('1234'),
         'prenom'=>'Pierre',
+        'pseudo'=>'laurent',
         'groupe_user'=>'1',
-        'tel'=>'99212748'
+        'tel'=>'70456780'
     ]);
 
     return 'true';
