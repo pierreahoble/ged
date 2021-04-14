@@ -21,12 +21,12 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
 
-                <li>
+                {{-- <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="mdi mdi-airplay"></i>
                         <span>Tableau de Bord</span>
                     </a>
-                </li>
+                </li> --}}
 
                 @auth
 
@@ -85,6 +85,13 @@
                         <i class="mdi  mdi-account-multiple-plus"></i>
                         <span>Ajouter un utilisateur</span>
                     </a>                   
+                </li>  
+
+                <li>
+                    <a href="{{url('listeDesUtilisateur')}}">
+                        <i class="mdi  mdi-account-multiple-plus"></i>
+                        <span>Liste des utilisateurs</span>
+                    </a>                   
                 </li>
 
                 <li>
@@ -94,20 +101,20 @@
                     </a>                   
                 </li>
 
-                <li>
-                    <a href="{{url('historique')}}">
-                        <i class="mdi  mdi-history"></i>
-                        <span>Historique</span>
-                    </a>                   
-                </li>
-
+                
                 <li>
                     <a href="{{url('ajouterType')}}">
                         <i class="mdi  mdi-cube-outline"></i>
                         <span>Ajouter un type de document</span>
                     </a>                   
                 </li>
-
+                
+                <li>
+                    <a href="{{url('historique')}}">
+                        <i class="mdi  mdi-history"></i>
+                        <span>Historique</span>
+                    </a>                   
+                </li>
                 @else 
                 <li>
                     <a href="{{url('nonautoriser')}}">

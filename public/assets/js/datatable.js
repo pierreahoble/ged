@@ -5,6 +5,9 @@ $(document).ready(function() {
         "scrollX": false,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/French.json"
-        }
+        },
+        "order": [
+            [3, 'desc']
+        ]
     });
 });

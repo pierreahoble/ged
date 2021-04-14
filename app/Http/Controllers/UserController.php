@@ -6,6 +6,7 @@ use App\User;
 use App\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -144,6 +145,62 @@ class UserController extends Controller
     }
 
 
+
+    public function liste_user()
+    {
+        $users = User::all();
+
+        return view('pages.liste_user',[
+            'users' => $users
+        ]);
+    }
+
+
+    //view edit
+    public function edit_user($id)
+    {
+        $id = Crypt::decrypt($id);
+        $user = User::find($id);
+        return view('pages.edit_user',[
+            'user' => $user
+        ]);
+    }
+
+    //Validate edit
+
+    public function validate_modfication(REQUEST $request){
+        
+        $this->validate($request,
+        [
+            'nom'=>'required|string',
+            'prenom'=>'required|string',
+            'email'=>'required|email|',
+            'password'=>'required|alpha_num|confirmed',
+            'password_confirmation'=>'required|',
+            'tel'=>'required',
+
+        ],[
+            'required'=>'Le champ :attribute est obligatoire',
+            'string'=>'Le :attribute doit être un champ de caratère',
+            'confirmed'=>'Le mot de passe de confirmation ne correspond pas',
+            'email'=>'Adresse email invalide',
+            'unique'=>'Cet utilisateur est deja enrégistré',
+            'alpha_num'=>'Le mot de passe ne peut contenir que des lettres et des chiffres.'
+
+        ]);
+
+        $user=User::find(request('id'))->update([
+            'nom'=>request('nom'), 
+            'email'=>request('email'), 
+            'prenom'=>request('prenom'),
+            'tel'=>request('tel'),
+            'password'=>bcrypt(request('password')),
+            'groupe_user'=>request('userType'),
+        ]);
+        $this->historique(Auth::user()->id,'modification un nouvel utilisateur');
+        Session::flash('succes','Modification effectuée avec succes');
+        return redirect('/home');
+    }
 
 
 

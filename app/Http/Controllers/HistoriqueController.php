@@ -11,7 +11,7 @@ class HistoriqueController extends Controller
     public function index()
     {
         $this->historique(Auth::user()->id,'Consulter la page des historiques');
-       $historiques=Historique::all();
+        $historiques=Historique::OrderBy('id','DESC')->get();
         return view('pages.historique',[
             'historiques'=>$historiques
         ]);

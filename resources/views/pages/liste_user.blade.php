@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="page-title mb-0 font-size-18">Rechercher des documents</h4>
+            <h4 class="page-title mb-0 font-size-18">Liste des documents</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -31,28 +31,6 @@
 
 @include('layout.message')
 
-{{-- <div class="row">
-    <div class="col-12">
-        <form class="outer-repeater" action="searchDoc" method="POST">
-            <div class="form-group">
-                @csrf
-                <label for="formemail">Type du document :</label>
-                <select name="type" class="form-control @error('document') is-invalid @enderror" required>
-                    <option value="">Choisir un type de document</option>
-                    @foreach ($types as $type)
-                    <option value="{{$type->id}}">{{$type->libelle}}</option>                                        
-                    @endforeach
-                </select>
-                @error('type')
-                     <div class="error">{{ $message }}</div>
-                @enderror
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Rechercher</button> <br> <br>
-
-        </form>
-    </div>
-</div> --}}
-
 
 <div class="row">
     <div class="col-12">
@@ -64,43 +42,36 @@
                 <table id="datatable" class="datatable table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Numéro de référence</th>
-                            <th>Titre du documents</th>
-                            <th>type de document</th>
-                            <th>Date</th>
-
-                          
+                            <th>Nom</th>
+                            <th>Prénoms</th>
+                            <th>Email</th>
                             <th>Actions</th>
                            
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($documents as $document)
+                        @foreach ($users as $user)
                             
                         <tr>
-                            <td>{{$document->numRef}}</td>
-                            <td>{{$document->titre}}</td>
-                            <td>{{$document->Type->libelle}}</td>
-                            @php
-                                setlocale(LC_TIME, 'French');
-                            @endphp
-                            <td>{{strftime("%d %B %Y",strtotime($document->created_at))}}</td>
-                           
+                            <td>{{$user->nom}}</td>
+                            <td>{{$user->prenom}}</td>
+                            <td>{{$user->email}}</td>
+                            
                            
                             <td>
                                 @auth
                                 @if (auth()->user()->groupe_user==1)
-                                <a type="button" href="{{url($document->nomDocument)}}#toolbar=0" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a>
+                                <a type="button" href="#" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a>
                                 @elseif(auth()->user()->groupe_user==2)
-                                    <a type="button" href="{{url('modifier_'.Crypt::encrypt($document->id))}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
-                                    <a type="button" href="{{url($document->nomDocument)}}#toolbar=0" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a>
-                                    {{-- <a type="button" data-id="{{Crypt::encrypt($document->id)}}" class="valider btn btn-danger btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="mdi mdi-delete-circle" style="color: white"></i></a> --}}
+                                    {{-- <a type="button" href="#" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                    <a type="button" href="{{url($user->nomuser)}}#toolbar=0" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a>
+                                    <a type="button" data-id="{{Crypt::encrypt($user->id)}}" class="valider btn btn-danger btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="mdi mdi-delete-circle" style="color: white"></i></a> --}}
 
                                 @else
-                                <a type="button" href="{{url('modifier_'.Crypt::encrypt($document->id))}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
-                                <a type="button" data-id="{{Crypt::encrypt($document->id)}}" class="valider btn btn-danger btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
-                                <a type="button" href="{{url($document->nomDocument)}}#toolbar=0" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a>
+                                <a type="button" href="{{url('edit_'.Crypt::encrypt($user->id))}}" class="btn btn-info btn-rounded waves-effect waves-light"><i class="mdi mdi-pencil" style="color: white"></i></a>
+                                {{-- <a type="button" data-id="{{Crypt::encrypt($user->id)}}" class="valider btn btn-danger btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="mdi mdi-delete-circle" style="color: white"></i></a>
+                                <a type="button" href="#" class="btn btn-primary btn-rounded waves-effect waves-light" target="_blanc"><i class="mdi mdi-eye" style="color: white"></i></a> --}}
 
                                 @endif
                                 @endauth

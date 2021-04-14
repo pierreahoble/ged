@@ -51,6 +51,14 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="formname">Date du document :</label>
+                                <input type="date" id="date_doc" class="form-control @error('date') is-invalid @enderror" name="date" placeholder="Entrer la date du document..." required value="{{date('y-m-d')}}">
+                                @error('date')
+                                     <div class="error">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label for="formemail">Type du document :</label>
                                 <select name="type" class="form-control @error('document') is-invalid @enderror" required>
                                     <option value="">Choisir un type de document</option>
@@ -107,4 +115,10 @@
 </div>
 <!-- end row -->
     
+@endsection
+
+@section('script')
+{{-- date_doc --}}
+
+
 @endsection

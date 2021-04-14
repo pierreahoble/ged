@@ -14,20 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('createUser',function(){
+// Route::get('createUser',function(){
     
-    App\User::create([
-        'nom'=>'Manzi',
-        'email'=>'laurent@gmail.com',
-        'password'=>bcrypt('1234'),
-        'prenom'=>'Pierre',
-        'pseudo'=>'laurent',
-        'groupe_user'=>'1',
-        'tel'=>'70456780'
-    ]);
+//     App\User::create([
+//         'nom'=>'Manzi',
+//         'email'=>'laurent@gmail.com',
+//         'password'=>bcrypt('1234'),
+//         'prenom'=>'Pierre',
+//         'pseudo'=>'laurent',
+//         'groupe_user'=>'1',
+//         'tel'=>'70456780'
+//     ]);
 
-    return 'true';
-});
+//     return 'true';
+// });
 
 Route::get('/change', function () {
 
@@ -99,6 +99,15 @@ Route::group(['middleware' => 'App\Http\Middleware\AuthMiddleware'], function ()
 
     //Historique
     Route::get('historique','HistoriqueController@index');
+
+    //List des Utilisateurs
+    Route::get('listeDesUtilisateur','UserController@liste_user')->name('ListeUser');
+
+    //Edit User
+    Route::get('edit_{id}','UserController@edit_user');
+
+    //Modifier user
+    Route::post('editUser','UserController@validate_modfication');
 
 
    

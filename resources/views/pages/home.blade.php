@@ -45,6 +45,7 @@
                             <th>Numéro de référence</th>
                             <th>Titre du documents</th>
                             <th>type de document</th>
+                            <th>Date</th>
                           
                             <th>Actions</th>
                            
@@ -58,6 +59,10 @@
                             <td>{{$document->numRef}}</td>
                             <td>{{$document->titre}}</td>
                             <td>{{$document->Type->libelle}}</td>
+                            @php
+                                setlocale(LC_TIME, 'French');
+                            @endphp
+                            <td>{{strftime("%d %B %Y",strtotime($document->created_at))}}</td>
                            
                             <td>
                                 @auth

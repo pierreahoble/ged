@@ -9,12 +9,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 Use File;
+Use Carbon\Carbon;
 
 class DoController extends Controller
 {
     public function index()
     {
-        $documents=Document::where('supprimer',0)->get();
+        $documents=Document::where('supprimer',0)
+                            ->OrderBy('id','DESC')
+                            ->get();
         $this->historique(Auth::user()->id,'Consulter la page de la liste des documents'); 
         return view('pages.home',[
             'documents'=>$documents
@@ -34,17 +37,37 @@ class DoController extends Controller
     public function storeDocument(REQUEST $request)
     {
         $filepdf="";
+        $todayDate = date('m/d/Y');
+        $date_aujourd =  Carbon::now();
+
+        
+        if ($date_aujourd->equalTo(request('date'))) {
+           return redirect()->back()->withErrors([
+               'date'=>'La date du document ne peut pas être égale d\'aujourd\'hui. Vérifiz S\'il vous plait'
+           ]);
+        }
+
+        if ($date_aujourd->lessThan(request('date'))) {
+            return redirect()->back()->withErrors([
+                'date'=>'La date du document doit être inferieur a la date d\'aujourd\'hui. Vérifiz S\'il vous plait'
+            ]);
+        }
+
+        // return $request;
 
         $this->validate($request,[
             'titre'=>'required',
             'type'=>'required',
             'reference'=>'required',
             'document.*'=>'required|mimes:doc,pdf,docx,zip|max:10000',
-            'description'=>'required|'
+            'description'=>'required|',
+            'date'=>'date'
         ],
         [
             'required'=>'Le champ :attribute est obligatoire',
-            'mimes'=>'Le :attribute doit être un fichier de type: pdf,doc,docx.'
+            'mimes'=>'Le :attribute doit être un fichier de type: pdf,doc,docx.',
+            'after_or_equal'=>'La date doit être une date d\'après-demain',
+            'date'=>'Date invalide'
         ]
       );
 
@@ -69,7 +92,8 @@ class DoController extends Controller
          'format'=>request('format'),
          'iduser'=>Auth::user()->id,
          'nomDocument'=>'documents/'.$filepdf,
-         'description'=>request('description')
+         'description'=>request('description'),
+         'date_doc'=> request('date')
       ]);
       //return $document;
         $this->historique(Auth::user()->id,'Ajout de docuemnt');
